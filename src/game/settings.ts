@@ -19,9 +19,9 @@ export interface QualityPreset {
 }
 
 export const QUALITY_PRESETS: Record<QualityLevel, QualityPreset> = {
-  low: { label: '低', pixelRatio: 1, shadowMap: 0, msaa: 0, bloom: false, debris: 2200, smoke: 3500, glow: 2500 },
-  medium: { label: '中', pixelRatio: 1.5, shadowMap: 2048, msaa: 4, bloom: true, debris: 4500, smoke: 6000, glow: 4000 },
-  high: { label: '高', pixelRatio: 2, shadowMap: 4096, msaa: 4, bloom: true, debris: 6000, smoke: 8000, glow: 5000 },
+  low: { label: '낮음', pixelRatio: 1, shadowMap: 0, msaa: 0, bloom: false, debris: 2200, smoke: 3500, glow: 2500 },
+  medium: { label: '보통', pixelRatio: 1.5, shadowMap: 2048, msaa: 4, bloom: true, debris: 4500, smoke: 6000, glow: 4000 },
+  high: { label: '높음', pixelRatio: 2, shadowMap: 4096, msaa: 4, bloom: true, debris: 6000, smoke: 8000, glow: 5000 },
 };
 
 export const QUALITY_LEVELS: QualityLevel[] = ['low', 'medium', 'high'];

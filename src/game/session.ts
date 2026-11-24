@@ -46,17 +46,17 @@ export const NO_FEEDBACK: Feedback = {
 export type SessionStatus = 'running' | 'dead' | 'timeup';
 
 const TXT = {
-  punch: ['ドカッ!', 'バキィ!', 'ドゴッ!', 'ボコォ!'],
-  smash: ['ドゴォォン!!', 'ズガァン!!'],
-  stomp: ['ズドォォン!!', 'ドシィィン!!'],
-  collapse: ['ガラガラ…', 'ズズーン…', 'ドドドド…', 'ゴゴゴゴ…'],
-  topple: ['ズガァァン!!', 'ドッシャーン!!'],
-  boom: ['ボカーン!', 'ドカーン!'],
-  roar: ['ギャオオオン!!', 'グオオオオ!!'],
-  breath: ['ゴォォォッ!!'],
-  tail: ['バキバキッ!', 'ブォン!'],
-  hit: ['カン!', 'ドン!'],
-  body: ['メキメキ…', 'バリバリ!'],
+  punch: ['퍽!', '빠각!', '쿵!', '퍼억!'],
+  smash: ['콰아앙!!', '쾅쾅!!'],
+  stomp: ['쿠웅!!', '쿵쿵쿵!!'],
+  collapse: ['와르르…', '쿠르릉…', '두두두두…', '우르르르…'],
+  topple: ['콰과광!!', '와장창!!'],
+  boom: ['펑!', '쾅!'],
+  roar: ['크아아앙!!', '그르아아아!!'],
+  breath: ['화르르륵!!'],
+  tail: ['빠각빠각!', '붕!'],
+  hit: ['쾅!', '탕!'],
+  body: ['우지끈…', '와자작!'],
 };
 
 export class Session {
@@ -150,11 +150,11 @@ export class Session {
     this.spawnWaves(dt);
     if (!this.cleared && this.world.buildings.destructionRatio >= this.stage.goal) {
       this.cleared = true;
-      this.fb.banner('目標達成！ STAGE CLEAR!', 'gold', 3);
+      this.fb.banner('목표 달성! STAGE CLEAR!', 'gold', 3);
       this.fb.flash(1);
       this.audio.jingle(true);
     }
-    if (Math.floor(this.timeLeft) === 30 && Math.floor(this.timeLeft + dt) === 31) this.fb.banner('残り30秒！', 'alert', 1.6);
+    if (Math.floor(this.timeLeft) === 30 && Math.floor(this.timeLeft + dt) === 31) this.fb.banner('남은 시간 30초!', 'alert', 1.6);
     if (this.world.kaiju.dead) return 'dead';
     if (this.timeLeft <= 0) {
       this.timeLeft = 0;
@@ -413,7 +413,7 @@ export class Session {
     this.fb.shake(clamp((0.15 + b.h * 0.02) * (160 / Math.max(40, d)), 0.05, 0.5));
     if (b.spec.name) {
       this.score.stats.landmarks++;
-      this.fb.banner(`${b.spec.name} 撃破！ +${formatInt(pts)}`, 'gold', 2.4);
+      this.fb.banner(`${b.spec.name} 격파! +${formatInt(pts)}`, 'gold', 2.4);
       this.fb.flash(0.6);
       w.flashes.flash(x, 20, z, 2200);
     }

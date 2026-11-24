@@ -215,11 +215,11 @@ export class Game {
       { capture: true },
     );
     this.pad.onConnect = () => {
-      this.showToast('ゲームパッドを接続しました', 2.5);
+      this.showToast('게임패드가 연결되었습니다', 2.5);
       document.getElementById('controls-hint')?.classList.add('mode-pad');
     };
     this.pad.onDisconnect = () => {
-      this.showToast('ゲームパッドが外れました', 2.5);
+      this.showToast('게임패드 연결이 해제되었습니다', 2.5);
       document.getElementById('controls-hint')?.classList.remove('mode-pad');
       this.menuNav.clear();
     };
@@ -248,7 +248,7 @@ export class Game {
     this.toTitle();
     const btn = document.getElementById('btn-start') as HTMLButtonElement;
     btn.disabled = false;
-    btn.textContent = 'ゲームスタート';
+    btn.textContent = '게임 시작';
     requestAnimationFrame(this.loop);
   }
 
@@ -285,7 +285,7 @@ export class Game {
     this.rig.cinematic = { pos: new THREE.Vector3(), look: new THREE.Vector3() };
     document.querySelectorAll('.goal-inline').forEach((el) => (el.textContent = String(Math.round(this.stage.goal * 100))));
     const best = document.getElementById('title-best')!;
-    best.textContent = this.best.score > 0 ? `ハイスコア ${formatInt(this.best.score)}（ランク ${this.best.rank}）` : '';
+    best.textContent = this.best.score > 0 ? `최고 점수 ${formatInt(this.best.score)} (랭크 ${this.best.rank})` : '';
   }
 
   private beginRun(): void {
@@ -306,7 +306,7 @@ export class Game {
     this.rig.cinematic = { pos: new THREE.Vector3(), look: new THREE.Vector3() };
     this.hud.showBanner(`STAGE ${this.stage.id}　${this.stage.name}`, '', 2.6);
     window.setTimeout(() => {
-      if (this.state === 'intro') this.hud.showBanner(`街の破壊率 ${Math.round(this.stage.goal * 100)}% をめざせ！`, 'small', 2.4);
+      if (this.state === 'intro') this.hud.showBanner(`도시 파괴율 ${Math.round(this.stage.goal * 100)}%를 달성하라!`, 'small', 2.4);
     }, 2400);
     const s = this.world.city.kaijuStart;
     this.world.fx.splash(s.x, -1, s.z, 18, 40);
@@ -365,17 +365,17 @@ export class Game {
     document.getElementById('result-rank')!.textContent = rank;
     const st = s.score.stats;
     const rows: [string, string][] = [
-      ['破壊率', `${Math.floor(b.destructionRatio * 100)}%`],
-      ['倒壊させたビル', `${b.collapsedCount} / ${b.countableTotal} 棟`],
-      ['撃破した戦車 / ヘリ', `${st.tanks} / ${st.helis}`],
-      ['ふっとばした車', `${st.cars} 台`],
-      ['最大コンボ', `${s.score.maxCombo}`],
-      ['破壊スコア', formatInt(f.base)],
+      ['파괴율', `${Math.floor(b.destructionRatio * 100)}%`],
+      ['무너뜨린 빌딩', `${b.collapsedCount} / ${b.countableTotal}채`],
+      ['격파한 전차 / 헬기', `${st.tanks} / ${st.helis}`],
+      ['날려 버린 차', `${st.cars}대`],
+      ['최대 콤보', `${s.score.maxCombo}`],
+      ['파괴 점수', formatInt(f.base)],
     ];
     if (success) {
-      rows.push(['クリアボーナス', `+${formatInt(f.clearBonus)}`]);
-      if (f.timeBonus > 0) rows.push(['残り時間ボーナス', `+${formatInt(f.timeBonus)}`]);
-      if (f.destructionBonus > 0) rows.push(['追加破壊ボーナス', `+${formatInt(f.destructionBonus)}`]);
+      rows.push(['클리어 보너스', `+${formatInt(f.clearBonus)}`]);
+      if (f.timeBonus > 0) rows.push(['남은 시간 보너스', `+${formatInt(f.timeBonus)}`]);
+      if (f.destructionBonus > 0) rows.push(['추가 파괴 보너스', `+${formatInt(f.destructionBonus)}`]);
     }
     const tbody = document.getElementById('result-rows')!;
     tbody.innerHTML = '';
@@ -394,7 +394,7 @@ export class Game {
       this.saveSettings();
       bestEl.textContent = 'NEW RECORD!';
     } else {
-      bestEl.textContent = this.best.score > 0 ? `ハイスコア ${formatInt(this.best.score)}` : '';
+      bestEl.textContent = this.best.score > 0 ? `최고 점수 ${formatInt(this.best.score)}` : '';
     }
     window.setTimeout(() => show('result-screen', true), success ? 1200 : 600);
   }
@@ -556,7 +556,7 @@ export class Game {
     set('opt-sfx', s.sfxVolume);
     set('opt-invert', s.invert);
     set('opt-fps', s.showFps);
-    text('opt-shake-val', s.shake === 0 ? 'なし' : `${Math.round(s.shake * 100)}%`);
+    text('opt-shake-val', s.shake === 0 ? '없음' : `${Math.round(s.shake * 100)}%`);
     text('opt-sens-val', s.sens.toFixed(1));
     text('opt-music-val', `${Math.round(s.musicVolume * 100)}%`);
     text('opt-sfx-val', `${Math.round(s.sfxVolume * 100)}%`);
@@ -564,7 +564,7 @@ export class Game {
     const midRun = this.state !== 'title' && s.quality !== this.sessionQuality;
     text(
       'quality-note',
-      midRun ? '破片や煙の量は、次のプレイから新しい画質になります。' : s.quality === 'low' ? '影・ぼかし効果なしの軽量設定です。' : '重いときは「低」にすると軽くなります。',
+      midRun ? '파편과 연기의 양은 다음 플레이부터 새 화질로 적용됩니다.' : s.quality === 'low' ? '그림자와 블룸 효과가 없는 경량 설정입니다.' : '게임이 무거우면 "낮음"으로 바꿔 보세요.',
     );
   }
 
@@ -643,7 +643,7 @@ export class Game {
     this.composer.setSize(w, h);
     this.bloom.resolution.set(size.x / 2, size.y / 2);
     this.rig.resize(w / h);
-    // "ドカン！" pop-ups sized for the screen (phones get smaller text)
+    // "도칸!" pop-ups sized for the screen (phones get smaller text)
     this.sfx.setScale(clamp(Math.min(w, h) / 760, 0.55, 1));
   }
 
@@ -706,7 +706,7 @@ export class Game {
       this.settings.music = !this.settings.music;
       this.applySettings();
       this.saveSettings();
-      this.showToast(this.settings.music ? 'BGM オン' : 'BGM オフ', 1.5);
+      this.showToast(this.settings.music ? 'BGM 켜짐' : 'BGM 꺼짐', 1.5);
     }
     if (this.input.wasPressed('KeyH')) this.hud.toggleHint();
     // the settings panel sits on top of the title / pause screen: Esc or P closes it first
@@ -938,8 +938,8 @@ export class Game {
     if (s.cleared && !this.announcedClear) {
       this.announcedClear = true;
       window.setTimeout(() => {
-        const how = this.touchMode || this.pad.connected ? 'ポーズメニューで終了' : 'Enterで終了';
-        if (this.state === 'playing') this.hud.showBanner(`時間いっぱい暴れてスコアを伸ばそう！（${how}）`, 'small', 3.5);
+        const how = this.touchMode || this.pad.connected ? '일시정지 메뉴에서 종료' : 'Enter로 종료';
+        if (this.state === 'playing') this.hud.showBanner(`시간이 다 될 때까지 날뛰며 점수를 올리자! (${how})`, 'small', 3.5);
       }, 3000);
     }
     if (s.cleared && inp.wasPressed('Enter')) {
@@ -952,7 +952,7 @@ export class Game {
     }
     if (status === 'dead') {
       this.setState('dying');
-      this.hud.showBanner('ドカゴン、力尽きる…', 'alert', 2.5);
+      this.hud.showBanner('도카곤, 쓰러지다…', 'alert', 2.5);
       this.audio.stopMusic();
       return;
     }
@@ -996,7 +996,7 @@ export class Game {
     if (!this.perfHintShown && this.perfTime > 10) {
       this.perfHintShown = true;
       if (this.perfFrames / this.perfTime < SLOW_FPS && this.settings.quality !== 'low') {
-        this.showToast('動作が重いときは、ポーズ →「設定」で画質を「低」にすると軽くなります', 6);
+        this.showToast('게임이 무거우면 일시정지 → "설정"에서 화질을 "낮음"으로 바꿔 보세요', 6);
       }
     }
   }

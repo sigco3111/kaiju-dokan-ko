@@ -16,6 +16,7 @@
     "check": "tsc --noEmit && vitest run && vite build"
   },
   "dependencies": {
+    "@fontsource/noto-sans-kr": "^5.3.1",
     "three": "^0.186.1"
   },
   "devDependencies": {

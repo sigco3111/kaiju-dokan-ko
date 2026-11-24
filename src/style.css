@@ -6,7 +6,7 @@
   --panel-border: rgba(255, 255, 255, 0.12);
   --text: #f6efe6;
   --text-dim: rgba(246, 239, 230, 0.6);
-  --font: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'YuGothic', 'Meiryo', 'Noto Sans JP', system-ui, sans-serif;
+  --font: 'Noto Sans KR', 'Pretendard', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', 'Noto Sans CJK KR', system-ui, sans-serif;
 }
 
 * {

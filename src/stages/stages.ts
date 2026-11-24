@@ -28,7 +28,7 @@ export interface StageDef {
 
 export const STAGE1: StageDef = {
   id: 1,
-  name: '湾岸シティ',
+  name: '해안 도시',
   subtitle: 'BAY CITY',
   seed: 20260926,
   blocksX: 8,
@@ -36,13 +36,13 @@ export const STAGE1: StageDef = {
   timeLimit: 240,
   goal: 0.4,
   waves: [
-    { time: 18, tanks: 2, helis: 0, message: '防衛軍 出動！' },
+    { time: 18, tanks: 2, helis: 0, message: '방위군 출동!' },
     { time: 40, tanks: 3, helis: 0 },
-    { time: 70, tanks: 2, helis: 2, message: '攻撃ヘリ 接近中！' },
+    { time: 70, tanks: 2, helis: 2, message: '공격 헬기 접근 중!' },
     { time: 105, tanks: 3, helis: 1 },
-    { time: 140, tanks: 3, helis: 2, message: '増援部隊 到着！' },
+    { time: 140, tanks: 3, helis: 2, message: '증원 부대 도착!' },
     { time: 175, tanks: 3, helis: 2 },
-    { time: 205, tanks: 4, helis: 2, message: '総攻撃だ！' },
+    { time: 205, tanks: 4, helis: 2, message: '총공격이다!' },
   ],
   maxTanks: 8,
   maxHelis: 4,

@@ -1,15 +1,15 @@
 <!doctype html>
-<html lang="ja">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>怪獣ドカン！ KAIJU DOKAN!</title>
-    <meta name="description" content="巨大怪獣を操作して街をドカンドカン破壊するブラウザゲーム（Three.js）" />
+    <title>괴수 도칸! KAIJU DOKAN!</title>
+    <meta name="description" content="거대 괴수를 조종해 도시를 쾅쾅 부수는 브라우저 게임 (Three.js)" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tanuu5.github.io/kaiju-dokan/" />
-    <meta property="og:title" content="怪獣ドカン！ KAIJU DOKAN!" />
-    <meta property="og:description" content="巨大怪獣を操作して街をドカンドカン破壊するブラウザゲーム（Three.js）" />
-    <meta property="og:image" content="https://tanuu5.github.io/kaiju-dokan/og-image.jpg" />
+    <meta property="og:url" content="https://sigco3111.github.io/kaiju-dokan-ko/" />
+    <meta property="og:title" content="괴수 도칸! KAIJU DOKAN!" />
+    <meta property="og:description" content="거대 괴수를 조종해 도시를 쾅쾅 부수는 브라우저 게임 (Three.js)" />
+    <meta property="og:image" content="https://sigco3111.github.io/kaiju-dokan-ko/og-image.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -24,13 +24,13 @@
       <!-- ===== HUD ===== -->
       <div id="hud" class="hidden">
         <div class="hud-top-left panel">
-          <div class="kaiju-name">ドカゴン</div>
+          <div class="kaiju-name">도카곤</div>
           <div class="bar hp"><div class="bar-fill" id="hp-fill"></div><span class="bar-label">HP</span></div>
           <div class="bar energy"><div class="bar-fill" id="energy-fill"></div><span class="bar-label">ENERGY</span></div>
           <div class="cooldowns">
-            <span class="cd" id="cd-tail">しっぽ</span>
-            <span class="cd" id="cd-jump">ジャンプ</span>
-            <span class="cd" id="cd-roar">咆哮</span>
+            <span class="cd" id="cd-tail">꼬리</span>
+            <span class="cd" id="cd-jump">점프</span>
+            <span class="cd" id="cd-roar">포효</span>
           </div>
         </div>
 
@@ -39,10 +39,10 @@
         </div>
 
         <div class="hud-top-right panel">
-          <div class="destruction-label">破壊率 <span id="destruction-pct">0</span><small>%</small><span class="goal-text">目標 <span id="goal-pct">50</span>%</span></div>
+          <div class="destruction-label">파괴율 <span id="destruction-pct">0</span><small>%</small><span class="goal-text">목표 <span id="goal-pct">50</span>%</span></div>
           <div class="bar destruction"><div class="bar-fill" id="destruction-fill"></div><div class="goal-marker" id="goal-marker"></div></div>
           <div class="score-row"><span class="score-label">SCORE</span><span id="score">0</span></div>
-          <div class="buildings-row">倒壊 <span id="buildings-count">0</span> 棟</div>
+          <div class="buildings-row">붕괴 <span id="buildings-count">0</span>채</div>
         </div>
 
         <div id="combo" class="combo"></div>
@@ -50,24 +50,24 @@
 
         <div id="controls-hint" class="panel">
           <div class="hint-kb">
-            <div><b>WASD</b> 移動 <b>Shift</b> ダッシュ</div>
-            <div><b>マウス / 矢印</b> カメラ</div>
-            <div><b>左クリック / J</b> パンチ</div>
-            <div><b>E / K</b> しっぽ回転</div>
-            <div><b>Space</b> ジャンプ踏みつけ</div>
-            <div><b>右クリック / F / L</b> マグマブレス（長押し）</div>
-            <div><b>Q / I</b> 咆哮</div>
-            <div class="dim"><b>H</b> 操作表示 <b>M</b> BGM <b>P</b> ポーズ</div>
+            <div><b>WASD</b> 이동 <b>Shift</b> 달리기</div>
+            <div><b>마우스 / 방향키</b> 카메라</div>
+            <div><b>좌클릭 / J</b> 펀치</div>
+            <div><b>E / K</b> 꼬리 회전</div>
+            <div><b>Space</b> 점프 짓밟기</div>
+            <div><b>우클릭 / F / L</b> 마그마 브레스 (길게 누르기)</div>
+            <div><b>Q / I</b> 포효</div>
+            <div class="dim"><b>H</b> 조작 표시 <b>M</b> BGM <b>P</b> 일시정지</div>
           </div>
           <div class="hint-pad">
-            <div><b>左スティック</b> 移動 <b>LB/L1</b> ダッシュ</div>
-            <div><b>右スティック</b> カメラ</div>
-            <div><b>X / □</b> パンチ</div>
-            <div><b>B / ○</b> しっぽ回転</div>
-            <div><b>A / ×</b> ジャンプ踏みつけ</div>
-            <div><b>RT / R2</b> マグマブレス（長押し）</div>
-            <div><b>Y / △</b> 咆哮</div>
-            <div class="dim"><b>START</b> ポーズ</div>
+            <div><b>왼쪽 스틱</b> 이동 <b>LB/L1</b> 달리기</div>
+            <div><b>오른쪽 스틱</b> 카메라</div>
+            <div><b>X / □</b> 펀치</div>
+            <div><b>B / ○</b> 꼬리 회전</div>
+            <div><b>A / ×</b> 점프 짓밟기</div>
+            <div><b>RT / R2</b> 마그마 브레스 (길게 누르기)</div>
+            <div><b>Y / △</b> 포효</div>
+            <div class="dim"><b>START</b> 일시정지</div>
           </div>
         </div>
 
@@ -81,13 +81,13 @@
       <div id="touch-ui" class="hidden">
         <div id="touch-layer"></div>
         <div id="touch-stick"><div class="knob"></div></div>
-        <button id="touch-pause" type="button" aria-label="ポーズ"><span></span><span></span></button>
+        <button id="touch-pause" type="button" aria-label="일시정지"><span></span><span></span></button>
         <div id="touch-buttons">
-          <button type="button" class="tbtn tbtn-punch" data-act="punch">パンチ</button>
-          <button type="button" class="tbtn tbtn-jump" data-act="jump">ジャンプ</button>
-          <button type="button" class="tbtn tbtn-tail" data-act="tail">しっぽ</button>
-          <button type="button" class="tbtn tbtn-breath" data-act="breath">ブレス</button>
-          <button type="button" class="tbtn tbtn-roar" data-act="roar">咆哮</button>
+          <button type="button" class="tbtn tbtn-punch" data-act="punch">펀치</button>
+          <button type="button" class="tbtn tbtn-jump" data-act="jump">점프</button>
+          <button type="button" class="tbtn tbtn-tail" data-act="tail">꼬리</button>
+          <button type="button" class="tbtn tbtn-breath" data-act="breath">브레스</button>
+          <button type="button" class="tbtn tbtn-roar" data-act="roar">포효</button>
         </div>
       </div>
 
@@ -95,27 +95,27 @@
       <div id="title-screen" class="screen">
         <div class="title-wrap">
           <div class="title-sub">KAIJU DOKAN!</div>
-          <h1 class="title-main">怪獣<span>ドカン！</span></h1>
-          <div class="title-stage">STAGE 1　湾岸シティ</div>
-          <button id="btn-start" class="btn btn-primary" disabled>読み込み中…</button>
-          <button id="btn-settings-title" class="btn btn-small">設定</button>
+          <h1 class="title-main">괴수<span>도칸!</span></h1>
+          <div class="title-stage">STAGE 1　해안 도시</div>
+          <button id="btn-start" class="btn btn-primary" disabled>불러오는 중…</button>
+          <button id="btn-settings-title" class="btn btn-small">설정</button>
           <div class="title-mission">
-            制限時間内に街の<b>破壊率 <span class="goal-inline">50</span>%</b>を目指せ！<br />
-            防衛軍の戦車や攻撃ヘリにも注意。
+            제한 시간 안에 도시의 <b>파괴율 <span class="goal-inline">50</span>%</b>를 달성하라!<br />
+            방위군의 전차와 공격 헬기도 조심하세요.
           </div>
           <div class="title-controls">
             <div class="kb-only">
-              <div><b>WASD</b> 移動　<b>Shift</b> ダッシュ　<b>マウス</b> カメラ</div>
-              <div><b>左クリック</b> パンチ　<b>E</b> しっぽ　<b>Space</b> 踏みつけ</div>
-              <div><b>右クリック長押し</b> マグマブレス　<b>Q</b> 咆哮</div>
-              <div class="dim">キーボードだけでも遊べます：J パンチ / K しっぽ / L ブレス / I 咆哮 / 矢印キー カメラ</div>
-              <div class="dim">ゲームパッドにも対応：左スティック 移動 / X（□）パンチ / B（○）しっぽ / A（×）ジャンプ / RT（R2）ブレス / Y（△）咆哮</div>
+              <div><b>WASD</b> 이동　<b>Shift</b> 달리기　<b>마우스</b> 카메라</div>
+              <div><b>좌클릭</b> 펀치　<b>E</b> 꼬리　<b>Space</b> 짓밟기</div>
+              <div><b>우클릭 길게 누르기</b> 마그마 브레스　<b>Q</b> 포효</div>
+              <div class="dim">키보드만으로도 플레이할 수 있습니다: J 펀치 / K 꼬리 / L 브레스 / I 포효 / 방향키 카메라</div>
+              <div class="dim">게임패드 지원: 왼쪽 스틱 이동 / X(□) 펀치 / B(○) 꼬리 / A(×) 점프 / RT(R2) 브레스 / Y(△) 포효</div>
             </div>
             <div class="touch-only">
-              <div><b>画面の左側</b>をドラッグで移動（端まで倒すとダッシュ）</div>
-              <div><b>画面の右側</b>をドラッグでカメラ</div>
-              <div><b>右下のボタン</b>で攻撃（ブレスは長押し）</div>
-              <div class="dim portrait-only">横向きにすると広い画面で遊べます</div>
+              <div><b>화면 왼쪽</b>을 드래그해 이동 (끝까지 밀면 달리기)</div>
+              <div><b>화면 오른쪽</b>을 드래그해 카메라 조작</div>
+              <div><b>오른쪽 아래 버튼</b>으로 공격 (브레스는 길게 누르기)</div>
+              <div class="dim portrait-only">가로 방향으로 돌리면 더 넓은 화면으로 즐길 수 있습니다</div>
             </div>
           </div>
           <div id="title-best" class="title-best"></div>
@@ -126,58 +126,58 @@
       <div id="pause-screen" class="screen hidden">
         <div class="menu-box">
           <h2>PAUSE</h2>
-          <button id="btn-resume" class="btn btn-primary">再開する</button>
-          <button id="btn-finish-pause" class="btn hidden">ここで終了して結果を見る</button>
-          <button id="btn-settings-pause" class="btn">設定</button>
-          <button id="btn-retry-pause" class="btn">最初からやり直す</button>
-          <button id="btn-title-pause" class="btn">タイトルへ戻る</button>
+          <button id="btn-resume" class="btn btn-primary">계속하기</button>
+          <button id="btn-finish-pause" class="btn hidden">여기서 끝내고 결과 보기</button>
+          <button id="btn-settings-pause" class="btn">설정</button>
+          <button id="btn-retry-pause" class="btn">처음부터 다시 하기</button>
+          <button id="btn-title-pause" class="btn">타이틀로 돌아가기</button>
         </div>
       </div>
 
       <!-- ===== SETTINGS (opened from the title or pause screen) ===== -->
       <div id="settings-screen" class="screen hidden">
         <div class="menu-box settings-box" role="dialog" aria-labelledby="settings-title">
-          <h2 id="settings-title">設定</h2>
+          <h2 id="settings-title">설정</h2>
           <div class="settings-list">
             <div class="setting-row">
-              <span class="setting-label">画質</span>
-              <div class="segmented" id="opt-quality" role="radiogroup" aria-label="画質">
-                <button type="button" role="radio" data-q="low">低</button>
-                <button type="button" role="radio" data-q="medium">中</button>
-                <button type="button" role="radio" data-q="high">高</button>
+              <span class="setting-label">화질</span>
+              <div class="segmented" id="opt-quality" role="radiogroup" aria-label="화질">
+                <button type="button" role="radio" data-q="low">낮음</button>
+                <button type="button" role="radio" data-q="medium">보통</button>
+                <button type="button" role="radio" data-q="high">높음</button>
               </div>
             </div>
-            <p class="setting-note" id="quality-note">重いときは「低」にすると軽くなります。</p>
+            <p class="setting-note" id="quality-note">게임이 무거우면 "낮음"으로 바꿔 보세요.</p>
             <label class="setting-row" for="opt-shake">
-              <span class="setting-label">画面の揺れ</span>
+              <span class="setting-label">화면 흔들림</span>
               <input id="opt-shake" type="range" min="0" max="1" step="0.05" />
               <output id="opt-shake-val" class="setting-value">70%</output>
             </label>
             <label class="setting-row" for="opt-sens">
-              <span class="setting-label">カメラ感度</span>
+              <span class="setting-label">카메라 감도</span>
               <input id="opt-sens" type="range" min="0.3" max="2.5" step="0.1" />
               <output id="opt-sens-val" class="setting-value">1.0</output>
             </label>
             <label class="setting-row" for="opt-invert">
-              <span class="setting-label">カメラ上下反転</span>
+              <span class="setting-label">카메라 상하 반전</span>
               <input id="opt-invert" type="checkbox" />
             </label>
             <label class="setting-row" for="opt-music">
-              <span class="setting-label">BGM 音量</span>
+              <span class="setting-label">BGM 볼륨</span>
               <input id="opt-music" type="range" min="0" max="1" step="0.05" />
               <output id="opt-music-val" class="setting-value">80%</output>
             </label>
             <label class="setting-row" for="opt-sfx">
-              <span class="setting-label">効果音 音量</span>
+              <span class="setting-label">효과음 볼륨</span>
               <input id="opt-sfx" type="range" min="0" max="1" step="0.05" />
               <output id="opt-sfx-val" class="setting-value">80%</output>
             </label>
             <label class="setting-row" for="opt-fps">
-              <span class="setting-label">FPS 表示</span>
+              <span class="setting-label">FPS 표시</span>
               <input id="opt-fps" type="checkbox" />
             </label>
           </div>
-          <button id="btn-settings-close" class="btn btn-primary">閉じる</button>
+          <button id="btn-settings-close" class="btn btn-primary">닫기</button>
         </div>
       </div>
 
@@ -193,13 +193,13 @@
             <tbody id="result-rows"></tbody>
           </table>
           <div id="result-best" class="result-best"></div>
-          <button id="btn-retry" class="btn btn-primary">もう一度あそぶ</button>
-          <button id="btn-title" class="btn">タイトルへ</button>
-          <div class="next-stage-note">STAGE 2 は準備中…</div>
+          <button id="btn-retry" class="btn btn-primary">다시 하기</button>
+          <button id="btn-title" class="btn">타이틀로</button>
+          <div class="next-stage-note">STAGE 2는 준비 중…</div>
         </div>
       </div>
 
-      <div id="lock-hint">画面をクリックするとマウスでカメラを操作できます（矢印キーでも操作可）</div>
+      <div id="lock-hint">화면을 클릭하면 마우스로 카메라를 조작할 수 있습니다 (방향키로도 가능)</div>
       <div id="error-box" class="hidden"></div>
     </div>
     <script type="module" src="/src/main.ts"></script>

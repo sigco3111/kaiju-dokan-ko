@@ -1,3 +1,6 @@
+import '@fontsource/noto-sans-kr/korean-500.css';
+import '@fontsource/noto-sans-kr/korean-700.css';
+import '@fontsource/noto-sans-kr/korean-900.css';
 import './style.css';
 import { Game } from './game/game';
 
@@ -19,7 +22,7 @@ function hasWebGL2(): boolean {
 
 const canvas = document.getElementById('game-canvas') as HTMLCanvasElement;
 if (!hasWebGL2()) {
-  showError('このブラウザでは WebGL2 が使えないため、ゲームを起動できません。\n最新の Chrome / Edge / Firefox / Safari でお試しください。');
+  showError('이 브라우저는 WebGL2를 지원하지 않아 게임을 실행할 수 없습니다.\n최신 Chrome / Edge / Firefox / Safari에서 다시 시도해 주세요.');
 } else {
   try {
     const game = new Game(canvas);
@@ -27,6 +30,6 @@ if (!hasWebGL2()) {
     setTimeout(() => game.start(), 30);
   } catch (e) {
     console.error(e);
-    showError(`起動に失敗しました：${(e as Error).message}`);
+    showError(`실행에 실패했습니다: ${(e as Error).message}`);
   }
 }

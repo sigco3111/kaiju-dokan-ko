@@ -24,7 +24,7 @@ const _v = new THREE.Vector3();
 const MAX_BIG = 5;
 const MAX_SCORE = 6;
 
-/** Manga-style onomatopoeia ("ドカン！") and score pop-ups projected from world space. */
+/** Manga-style onomatopoeia ("도칸!") and score pop-ups projected from world space. */
 export class SfxText {
   private readonly items: Item[] = [];
   /** Font-size multiplier (smaller on phones). */

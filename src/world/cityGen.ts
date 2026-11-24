@@ -512,7 +512,7 @@ function makeTower(i0: number, k0: number): BuildingSpec {
   b.fill(1, 15, 1, 3, 16, 3, () => white, () => STYLE.GLASS);
   // antenna
   for (let y = 17; y < MAX_FLOORS; y++) b.set(2, y, 2, band(y), L);
-  return b.spec(i0, k0, 'tower', 12000, 1, 'ドカンタワー');
+  return b.spec(i0, k0, 'tower', 12000, 1, '도칸 타워');
 }
 
 /** Voxel dome stadium occupying a whole block. */
@@ -534,7 +534,7 @@ function makeDome(i0: number, k0: number): BuildingSpec {
       }
     }
   }
-  return b.spec(i0, k0, 'dome', 6000, 0, 'ドカンドーム');
+  return b.spec(i0, k0, 'dome', 6000, 0, '도칸 돔');
 }
 
 function buildHarbor(
@@ -603,7 +603,7 @@ function buildHarbor(
       b.fill(1, 8, 0, 3, 8, 1, () => 0xe8e8e8, () => STYLE.PLAIN);
       let free = true;
       for (let x = 0; x < w; x++) for (let z = 0; z < 2; z++) if (occupied[i + x + (kc + z) * gridW]) free = false;
-      if (free) add(b.spec(i, kc, 'crane', 1500, 0.9, 'ガントリークレーン'));
+      if (free) add(b.spec(i, kc, 'crane', 1500, 0.9, '갠트리 크레인'));
       i += w + rng.int(2, 3);
     }
   }

@@ -29,7 +29,7 @@ export interface StageDef {
 export const STAGE1: StageDef = {
   id: 1,
   name: '해안 도시',
-  subtitle: 'BAY CITY',
+  subtitle: '해안 도시',
   seed: 20260926,
   blocksX: 8,
   blocksZ: 7,

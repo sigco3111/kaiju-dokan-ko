@@ -304,7 +304,7 @@ export class Game {
     this.hud.show(true);
     this.setState('intro');
     this.rig.cinematic = { pos: new THREE.Vector3(), look: new THREE.Vector3() };
-    this.hud.showBanner(`STAGE ${this.stage.id}　${this.stage.name}`, '', 2.6);
+    this.hud.showBanner(`스테이지 ${this.stage.id}　${this.stage.name}`, '', 2.6);
     window.setTimeout(() => {
       if (this.state === 'intro') this.hud.showBanner(`도시 파괴율 ${Math.round(this.stage.goal * 100)}%를 달성하라!`, 'small', 2.4);
     }, 2400);
@@ -326,7 +326,7 @@ export class Game {
     this.focusPoint(this.focus);
     this.rig.snapTo(this.focus);
     this.hud.clearBanners();
-    this.hud.showBanner('START!', 'gold', 1.2);
+    this.hud.showBanner('시작!', 'gold', 1.2);
     this.audio.startMusic();
     this.lockPointer();
   }
@@ -360,7 +360,7 @@ export class Game {
     const f = finalScore(s.score.score, success, s.timeLeft, b.destructionRatio, this.stage.goal);
     const rank = rankFor(f.total, success, this.stage.rank);
     const title = document.getElementById('result-title')!;
-    title.textContent = success ? 'STAGE CLEAR!' : s.world.kaiju.dead ? 'GAME OVER' : 'TIME UP';
+    title.textContent = success ? '스테이지 클리어!' : s.world.kaiju.dead ? '게임 오버' : '시간 종료';
     title.classList.toggle('fail', !success);
     document.getElementById('result-rank')!.textContent = rank;
     const st = s.score.stats;
@@ -392,7 +392,7 @@ export class Game {
     if (f.total > this.best.score) {
       this.best = { score: f.total, rank };
       this.saveSettings();
-      bestEl.textContent = 'NEW RECORD!';
+      bestEl.textContent = '신기록!';
     } else {
       bestEl.textContent = this.best.score > 0 ? `최고 점수 ${formatInt(this.best.score)}` : '';
     }

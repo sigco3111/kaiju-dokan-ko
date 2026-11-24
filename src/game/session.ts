@@ -150,7 +150,7 @@ export class Session {
     this.spawnWaves(dt);
     if (!this.cleared && this.world.buildings.destructionRatio >= this.stage.goal) {
       this.cleared = true;
-      this.fb.banner('목표 달성! STAGE CLEAR!', 'gold', 3);
+      this.fb.banner('목표 달성! 스테이지 클리어!', 'gold', 3);
       this.fb.flash(1);
       this.audio.jingle(true);
     }
